@@ -17,9 +17,9 @@ const generateQrcode = async (req, res) => {
       },
     };
 
-    const qrcode = await QRCode.toDataURL(url, options);
+    const qrcode = await QRCode.toFileStream(res, url, options);
     // console.log(qrcode);
-    response(res, StatusCodes.ACCEPTED, true, qrcode, "Success");
+    // response(res, StatusCodes.ACCEPTED, true, qrcode, "Success");
   } catch (err) {
     response(res, StatusCodes.BAD_REQUEST, true, null, err.message);
   }
